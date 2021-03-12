@@ -40,7 +40,7 @@ public class Colemak
 		add(clearWriteButton);
 		clearWriteButton.addActionListener(this);
 
-		setTitle("Syed's QWERTY to Colemak program");
+		setTitle("QWERTY to Colemak");
 		setSize(350, 350);
 		setVisible(true);
 

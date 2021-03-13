@@ -13,8 +13,8 @@ public class Colemak
 	private Label labelOut;
 	private TextField qwertyIn;
 	private TextField colemakOut;
+	private TextField fileContents;
 	private Button clearWriteButton;
-
 	private Map <Character,Character> table = new HashMap<Character,Character>();
 
 	public Colemak() {
@@ -23,16 +23,15 @@ public class Colemak
 		labelIn = new Label("Enter QWERTY:");
 		add(labelIn);
 
-		qwertyIn = new TextField(200);
+		qwertyIn = new TextField(70);
 		qwertyIn.addActionListener(this);
-		add(qwertyIn);
-
 		qwertyIn.addKeyListener(this);
+		add(qwertyIn);
 
 		labelOut = new Label("Colemak:");
 		add(labelOut);
 
-		colemakOut = new TextField(200);
+		colemakOut = new TextField(70);
 		colemakOut.setEditable(false);
 		add(colemakOut);
 
@@ -71,13 +70,12 @@ public class Colemak
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("colemak-out.txt", true)));
 			out.println(colemakOut.getText());
 			out.close();
-			System.out.println("Write.")
+			System.out.println("Write.");
 		} catch (IOException e) {
 			System.out.println("No write.");
 			e.printStackTrace();
 		}
 		qwertyIn.setText("");
-		colemakOut.setText("");
 	}
 
 	public void keyReleased(KeyEvent e)
@@ -85,13 +83,7 @@ public class Colemak
 		colemakOut.setText(qwertyToColemak(qwertyIn.getText()));
 	}
 
-	public void keyPressed(KeyEvent e)
-	{
-		colemakOut.setText(qwertyToColemak(qwertyIn.getText()));
-	}
-
-	public void keyTyped(KeyEvent e)
-	{}
-
+	public void keyPressed(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
 }
 
